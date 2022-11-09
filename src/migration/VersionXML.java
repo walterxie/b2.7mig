@@ -30,7 +30,7 @@ public class VersionXML {
         for (Path path : allFiles) {
             String fn = pathToPkgFile(path);
             if (fn.contains("beauti"))
-                System.out.println(INDENT + INDENT + "<provider classname=\"" + fn.toString() + "\"/>");
+                System.out.println(INDENT + INDENT + "<provider classname=\"" + fn + "\"/>");
         }
         System.out.println(INDENT + "</service>");
 
@@ -38,13 +38,13 @@ public class VersionXML {
         for (Path path : allFiles) {
             String fn = pathToPkgFile(path);
             if (!fn.contains("beauti"))
-                System.out.println(INDENT + INDENT + "<provider classname=\"" + fn.toString() + "\"/>");
+                System.out.println(INDENT + INDENT + "<provider classname=\"" + fn + "\"/>");
         }
         System.out.println(INDENT + "</service>");
     }
 
     private String pathToPkgFile(Path path) {
-        String p = path.toString().replace(srcDir.toString(), "");
+        String p = path.toString().replace(srcDir.toString(), "").replace(".java", "");
         if (p.startsWith("/"))
             p = p.substring(1);
         return p.replaceAll("\\/", ".");
